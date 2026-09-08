@@ -20,7 +20,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             initial={{ y:100 }}
             animate={{ y:0 }}
             transition={{ duration: 0.5 }}
-            className='relative w-[95%] max-w-4xl md-4'
+            className='relative w-[95%] max-w-4xl my-4'
         >
                 <div className='relative bg-linear-to-r from-blue-600 to-blue-800 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 px-3 py-2'>
                     <div className='absolute -top-8 right-3'>
@@ -31,18 +31,18 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                             className='p-2 rounded-full bg-white dark:bg-gray-100 transition-colors backdrop-blur-sm'
                         >
                             {darkMode ? (
-                                <Sun className='w-4 lg:w-5 h-4 lg:h-5 text-black'>
+                                <Sun className='w-4 lg:w-6 h-4 lg:h-6 text-black'>
 
                                 </Sun>
                             ) : (
-                                <Moon className='w-4 lg:w-5 h-4 lg:h-5 text-black'>
+                                <Moon className='w-4 lg:w-6 h-4 lg:h-6 text-black'>
 
                                 </Moon>
                             )}
 
                         </motion.button>
                     </div>
-                    <div className='flex item-center justify-around gap-1'>
+                    <div className='flex items-center justify-around gap-1'>
                         {navItems.map((item) => {
                             const Icon = item.icon
                             const isActive = activeTab === item.name
