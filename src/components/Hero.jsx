@@ -26,19 +26,19 @@ const Hero = () => {
                 </div>
                 <div className='lg:w-3/5 w-full flex flex-col items-center lg:items-start text-center lg:text-left' data-aos='fade-left'>
                     <div className='inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-5'>
-                        <span className='w-2 h-2 rounded-full bg-green-300 animate-pulse'/>
-                        <span className='text-sm font-medium dark:text-blue-300 text-gray-700'>
+                        <span className='w-2 h-2 rounded-full bg-green-500 dark:bg-green-400 animate-pulse'/>
+                        <span className='text-sm font-medium text-blue-700 dark:text-blue-300'>
                             Available for work
                         </span>
                     </div>
-                    <h1 className='text-4xl sm:text-5xl lg:text-6xl font-bold mb-3 text-gray-900 dark:text-white'>
-                        Hi, I'm <span className='text-blue-600 dark:text-blue-300'>Ganidu Chalinda</span>
+                    <h1 className='text-4xl sm:text-5xl lg:text-6xl font-bold mb-3 text-gray-900 dark:text-white transition-colors'>
+                        Hi, I'm <span className='text-blue-600 dark:text-blue-400'>Ganidu Chalinda</span>
                     </h1>
-                    <h2 className='text-xl sm:text-2xl font-mono mb-4 dark:text-blue-400 text-blue-600'>
-                        <span className='text-gray-400' >&lt; </span>Software Engineer<span className='text-gray-400' > &gt;</span>
+                    <h2 className='text-xl sm:text-2xl font-mono mb-4 text-blue-600 dark:text-blue-400 transition-colors'>
+                        <span className='text-gray-400 dark:text-gray-500'>&lt; </span>Software Engineer<span className='text-gray-400 dark:text-gray-500'> &gt;</span>
                     </h2>
-                    <p className='mb-6 leading-relaxed max-w-mb lg:max-w-lg dark:text-gray-200 text-gray-800'>
-                        Hi, I'm Ganidu Chalinda — a Software Engineer who loves crafting high-quality digital experiences. Backed by 2+ years of experience and 4+ completed projects, I specialize in writing clean code and solving modern engineering challenges. Always open to new opportunities and collaborations. Feel free to connect or download my CV to learn more about my work!
+                    <p className='mb-6 leading-relaxed max-w-md lg:max-w-lg text-gray-700 dark:text-gray-300 transition-colors'>
+                        Hi, I'm Ganidu Chalinda — a Software Engineer Undergraduate who loves crafting high-quality digital experiences. Backed by 2+ years of experience and 4+ completed projects, I specialize in writing clean code and solving modern engineering challenges. Always open to new opportunities and collaborations. Feel free to connect or download my CV to learn more about my work!
                     </p>
                     <div className='flex gap-8 mb-7'>
                         {[
@@ -46,10 +46,10 @@ const Hero = () => {
                             {number: '4+', lable: 'Project Done'},
                         ].map((stat, index) =>(
                             <div key={index} className='text-center'>
-                                <div className='text-2xl font-bold dark:text-white text-gray-900'>
+                                <div className='text-2xl font-bold text-gray-900 dark:text-white transition-colors'>
                                     {stat.number}     
                                 </div>
-                                <div className='text-xs dark:text-gray-400 text-gray-600'>
+                                <div className='text-xs text-gray-600 dark:text-gray-400 transition-colors'>
                                     {stat.lable}
                                 </div> 
                             </div>
@@ -57,15 +57,15 @@ const Hero = () => {
                     </div>
                     <div className='flex flex-col sm:flex-row gap-4 w-full sm:w-auto'>
                         <a href='/CV.docx' download className='w-full sm:w-auto'>
-                            <button className='w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full text-white font-semibold bg-linear-to-r from-blue-600 to-blue-800 hover:shadow-[0_0_40px_rgba(37,99,235,0.7)] transition-all duration-300 transform hover:scale-105'>
+                            <button className='w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full text-white font-semibold bg-linear-to-r from-blue-600 to-blue-800 hover:shadow-[0_0_40px_rgba(37,99,235,0.7)] transition-all duration-300 transform hover:scale-105 cursor-pointer'>
                                 <DownloadIcon size={18}/>
                                 Download CV
                             </button>
                         </a>
                         <a href='#contact' className='w-full sm:w-auto'>
-                            <button className='w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full border-2 dark:border-blue-500 border-blue-600 dark:text-white text-gray-800 hover:text-white dark:hovertext-white font-semibold dark:hover:bg-blue-500 hover:bg-blue-600 hover:shadow-[0_0_40px_rgba(37,99,235,0.7)] transition-all duration-300 transform hover:scale-105'>
+                            <button className='w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full border-2 border-blue-600 dark:border-blue-500 text-blue-600 dark:text-white hover:text-white dark:hover:text-white font-semibold hover:bg-blue-600 dark:hover:bg-blue-500 hover:shadow-[0_0_40px_rgba(37,99,235,0.7)] transition-all duration-300 transform hover:scale-105 cursor-pointer'>
                                 <Mail size={18}/>
-                                Here Me
+                                Hire Me
                             </button>
                         </a>
                     </div>

@@ -25,21 +25,18 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 <div className='relative bg-linear-to-r from-blue-600 to-blue-800 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 px-3 py-2'>
                     <div className='absolute -top-8 right-3'>
                         <motion.button
-                            whileHover={{ scale: 1.2 }}
+                            whileHover={{ scale: 1.15 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={toggleDarkMode}
-                            className='p-2 rounded-full bg-white dark:bg-gray-100 transition-colors backdrop-blur-sm'
+                            title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                            aria-label='Toggle dark mode'
+                            className='p-2 rounded-full bg-white dark:bg-gray-800 text-amber-500 dark:text-yellow-400 shadow-lg border border-gray-200 dark:border-gray-700 transition-colors backdrop-blur-sm cursor-pointer flex items-center justify-center'
                         >
                             {darkMode ? (
-                                <Sun className='w-4 lg:w-6 h-4 lg:h-6 text-black'>
-
-                                </Sun>
+                                <Sun className='w-4 lg:w-5 h-4 lg:h-5' />
                             ) : (
-                                <Moon className='w-4 lg:w-6 h-4 lg:h-6 text-black'>
-
-                                </Moon>
+                                <Moon className='w-4 lg:w-5 h-4 lg:h-5 text-gray-800' />
                             )}
-
                         </motion.button>
                     </div>
                     <div className='flex items-center justify-around gap-1'>
