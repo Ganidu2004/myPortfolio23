@@ -41,7 +41,7 @@ const Certificates = () => {
                 <div className='flex flex-col lg:flex-row items-center gap-12 lg:gap-16'>
                     <div className='lg:w-2/5 w-full flex justify-center' data-aos='fade-right'>
                         <div className='relative group'>
-                            <div className='absolute -inset-4 bg-gradient-to-r from-blue-600 to-blue-800 rounded-3xl filter blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500'></div>
+                            <div className='absolute -inset-4 bg-linear-to-r from-blue-600 to-blue-800 rounded-3xl filter blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500'></div>
                             <div className='relative w-72 sm:w-96 lg:w-96'>
                                 <img src={certificateImg} alt='Certificate' className='w-full h-auto object-contain rounded-2xl relative z-10 shadow-2xl shadow-blue-500/20 group-hover:scale-105 transition-transform duration-500' />
                                 <div className='absolute -inset-1 border-2 border-blue-500/30 rounded-2xl group-hover:border-blue-400/60 transition-colors duration-500 z-0' />
