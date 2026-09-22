@@ -1,9 +1,16 @@
-import { Mail, Phone, Send } from 'lucide-react'
-import React from 'react'
+import { CheckCircle, Loader2, Mail, Phone, Send, XCircle } from 'lucide-react'
+import React, { useState } from 'react'
 import { FaFacebook, FaGithub, FaInstagramSquare, FaLinkedin } from 'react-icons/fa'
 import contact from '../assets/call.jpg'
 
+// Email validation regex
+const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+
 const Contact = () => {
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+    const [emailError, setEmailError] = useState('')
+    const [status, setStatus] = useState('idle') // idle | loading | success | error
+
     const socialLinks = [
         {
             name: 'LinkedIn',
@@ -35,6 +42,59 @@ const Contact = () => {
         },
     ]
 
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData((prev) => ({ ...prev, [name]: value }))
+
+        // Real-time email validation
+        if (name === 'email') {
+            if (value && !isValidEmail(value)) {
+                setEmailError('Please enter a valid email address.')
+            } else {
+                setEmailError('')
+            }
+        }
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        // Final email check before submit
+        if (!isValidEmail(formData.email)) {
+            setEmailError('Please enter a valid email address.')
+            return
+        }
+
+        setStatus('loading')
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify({
+                    access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+                    name: formData.name,
+                    email: formData.email,
+                    message: formData.message,
+                }),
+            })
+
+            const result = await response.json()
+
+            if (result.success) {
+                setStatus('success')
+                setFormData({ name: '', email: '', message: '' })
+            } else {
+                setStatus('error')
+            }
+        } catch {
+            setStatus('error')
+        }
+
+        // Reset status after 5 seconds
+        setTimeout(() => setStatus('idle'), 5000)
+    }
+
     return (
         <section id='contact' className='py-20 relative overflow-hidden'>
             <div className='container mx-auto px-6 max-w-6xl relative z-10'>
@@ -50,35 +110,89 @@ const Contact = () => {
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start'>
                     {/* Form Column */}
                     <form
-                        onSubmit={(e) => e.preventDefault()}
+                        onSubmit={handleSubmit}
                         className='flex flex-col gap-5 dark:bg-zinc-900/30 bg-white/50 p-8 sm:p-10 rounded-3xl border dark:border-zinc-800 border-gray-100 backdrop-blur-sm w-full max-w-xl mx-auto lg:mx-0 order-2 lg:order-1 shadow-lg'
                         data-aos='fade-right'>
+
+                        {/* Name field */}
                         <input
                             type='text'
+                            name='name'
+                            value={formData.name}
+                            onChange={handleChange}
                             placeholder='Name'
-                            className='w-full px-5 py-4 rounded-xl border outline-hidden text-base transition-all dark:border-zinc-800 border-gray-200 dark:bg-zinc-900/60 bg-white dark:text-white text-gray-800 focus:border-blue-500 dark:focus:border-blue-400' />
-                        <input
-                            type='email'
-                            placeholder='Email'
-                            className='w-full px-5 py-4 rounded-xl border outline-hidden text-base transition-all dark:border-zinc-800 border-gray-200 dark:bg-zinc-900/60 bg-white dark:text-white text-gray-800 focus:border-blue-500 dark:focus:border-blue-400'
                             required
-                            data-aos='fade-up'
-                            data-aos-delay='200' />
+                            className='w-full px-5 py-4 rounded-xl border outline-hidden text-base transition-all dark:border-zinc-800 border-gray-200 dark:bg-zinc-900/60 bg-white dark:text-white text-gray-800 focus:border-blue-500 dark:focus:border-blue-400' />
+
+                        {/* Email field with validation */}
+                        <div className='flex flex-col gap-1.5'>
+                            <input
+                                type='email'
+                                name='email'
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder='Email'
+                                required
+                                data-aos='fade-up'
+                                data-aos-delay='200'
+                                className={`w-full px-5 py-4 rounded-xl border outline-hidden text-base transition-all dark:bg-zinc-900/60 bg-white dark:text-white text-gray-800 ${
+                                    emailError
+                                        ? 'border-red-500 dark:border-red-500 focus:border-red-500'
+                                        : 'dark:border-zinc-800 border-gray-200 focus:border-blue-500 dark:focus:border-blue-400'
+                                }`} />
+                            {emailError && (
+                                <p className='text-xs text-red-500 flex items-center gap-1 pl-1'>
+                                    <XCircle size={13} />
+                                    {emailError}
+                                </p>
+                            )}
+                        </div>
+
+                        {/* Message field */}
                         <textarea
+                            name='message'
+                            value={formData.message}
+                            onChange={handleChange}
                             rows={5}
                             placeholder='Message'
-                            className='w-full px-5 py-4 rounded-xl border outline-hidden text-base transition-all dark:border-zinc-800 border-gray-200 dark:bg-zinc-900/60 bg-white dark:text-white text-gray-800 focus:border-blue-500 dark:focus:border-blue-400 resize-none'
                             required
                             data-aos='fade-up'
-                            data-aos-delay='300' />
+                            data-aos-delay='300'
+                            className='w-full px-5 py-4 rounded-xl border outline-hidden text-base transition-all dark:border-zinc-800 border-gray-200 dark:bg-zinc-900/60 bg-white dark:text-white text-gray-800 focus:border-blue-500 dark:focus:border-blue-400 resize-none' />
+
+                        {/* Submit button */}
                         <button
                             type='submit'
-                            className='inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-white font-medium text-base bg-blue-600 hover:bg-blue-700 active:scale-95 transition-all cursor-pointer w-full sm:w-fit shadow-md shadow-blue-500/20'
+                            disabled={status === 'loading' || !!emailError}
+                            className='inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-white font-medium text-base bg-blue-600 hover:bg-blue-700 active:scale-95 transition-all cursor-pointer w-full sm:w-fit shadow-md shadow-blue-500/20 disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100'
                             data-aos='fade-up'
                             data-aos-delay='300'>
-                            <Send size={18} />
-                            Send Message
+                            {status === 'loading' ? (
+                                <>
+                                    <Loader2 size={18} className='animate-spin' />
+                                    Sending...
+                                </>
+                            ) : (
+                                <>
+                                    <Send size={18} />
+                                    Send Message
+                                </>
+                            )}
                         </button>
+
+                        {/* Success / Error feedback */}
+                        {status === 'success' && (
+                            <div className='flex items-center gap-2 text-sm text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800/50 px-4 py-3 rounded-xl'>
+                                <CheckCircle size={16} />
+                                Message sent! I'll get back to you soon.
+                            </div>
+                        )}
+                        {status === 'error' && (
+                            <div className='flex items-center gap-2 text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 px-4 py-3 rounded-xl'>
+                                <XCircle size={16} />
+                                Something went wrong. Please try again.
+                            </div>
+                        )}
                     </form>
 
                     <div
