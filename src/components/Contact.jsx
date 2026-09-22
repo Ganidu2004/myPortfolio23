@@ -85,7 +85,7 @@ const Contact = () => {
                         className='w-full flex flex-col items-center justify-center order-1 lg:order-2'
                         data-aos='fade-left'
                     >
-                        <div className='relative group w-full max-w-[260px] sm:max-w-[290px] py-4'>
+                        <div className='relative group w-full max-w-65 sm:max-w-72.5 py-4'>
                             <div className='absolute inset-0 bg-linear-to-r from-blue-600 to-indigo-600 rounded-[2.5rem] filter blur-2xl opacity-30 group-hover:opacity-55 transition-opacity duration-500 pointer-events-none -z-10' />
                             <div className='absolute inset-0 border border-blue-500/20 dark:border-blue-400/15 rounded-[2.5rem] scale-118 group-hover:scale-128 transition-transform duration-500 pointer-events-none' />
                             <div className='absolute inset-0 border-2 border-blue-500/40 dark:border-blue-400/30 rounded-[2.5rem] scale-110 group-hover:scale-118 transition-transform duration-500 pointer-events-none' />
