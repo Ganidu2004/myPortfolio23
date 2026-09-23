@@ -41,7 +41,7 @@ const About = () => {
 
             {/* Description */}
             <p className='text-base lg:text-lg mb-8 leading-relaxed text-gray-700 dark:text-gray-300 max-w-xl transition-colors'>
-              I am an HND in Information Technology undergraduate at SLIATE, ATI Galle, with hands-on experience in full-stack web development using React.js, Node.js, and NoSQL databases. As a collaborative team player equipped with strong leadership skills, I have a genuine passion for building real-world software solutions that solve practical problems. Driven by a continuous desire to learn and adapt, I am eager to secure a software engineering internship where I can apply my technical foundation, collaborate with an innovative development team, and accelerate my growth into a professional Software Engineer.
+              As an HND in Information Technology undergraduate at SLIATE, ATI Galle, I bring hands-on experience in full-stack web development using React.js, Node.js, and NoSQL databases, alongside mobile application development using Flutter, Firebase, and BLoC architecture. As a collaborative team player equipped with strong leadership skills, I have a genuine passion for building scalable real-world software solutions that solve practical problems across both web and mobile platforms. Driven by a continuous desire to learn and adapt, I am eager to secure a software engineering internship where I can apply my technical foundation, collaborate with an innovative development team, and accelerate my growth into a professional Software Engineer.
             </p>
 
             {/* Social Media Icons */}
