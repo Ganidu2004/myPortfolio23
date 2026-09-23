@@ -71,7 +71,7 @@ const Projects = () => {
                     {projectsData.map((project) => (
                         <div
                             key={project.id}
-                            className='w-full sm:w-[calc(50%-16px)] lg:w-[420px] max-w-md shrink-0 snap-start group rounded-3xl overflow-hidden border-2 transition-all duration-300 dark:border-zinc-800/60 border-gray-200 dark:bg-zinc-900/50 bg-white hover:border-blue-500/50 hover:shadow-xl dark:hover:shadow-blue-500/5 flex flex-col justify-between'>
+                            className='w-full sm:w-[calc(50%-16px)] lg:w-105 max-w-md shrink-0 snap-start group rounded-3xl overflow-hidden border-2 transition-all duration-300 dark:border-zinc-800/60 border-gray-200 dark:bg-zinc-900/50 bg-white hover:border-blue-500/50 hover:shadow-xl dark:hover:shadow-blue-500/5 flex flex-col justify-between'>
                             <div>
                                 <div className='relative overflow-hidden aspect-video bg-gray-100 dark:bg-zinc-900'>
                                     <img
