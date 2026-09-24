@@ -2,6 +2,7 @@ import React from 'react'
 import { FaFacebook, FaGithub, FaInstagramSquare, FaLinkedin } from 'react-icons/fa'
 import hero from '../assets/profile.jpeg'
 import { DownloadIcon, Mail } from 'lucide-react'
+import CV from '../assets/CV.pdf'
 
 const Hero = () => {
     const socialIcons =[
@@ -56,7 +57,7 @@ const Hero = () => {
                         ))} 
                     </div>
                     <div className='flex flex-col sm:flex-row gap-4 w-full sm:w-auto'>
-                        <a href='/CV.docx' download='Ganidu_Chalinda_CV.docx' className='w-full sm:w-auto'>
+                        <a href={CV} download='Ganidu_Chalinda_CV.pdf' className='w-full sm:w-auto'>
                             <button className='w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full text-white font-semibold bg-linear-to-r from-blue-600 to-blue-800 hover:shadow-[0_0_40px_rgba(37,99,235,0.7)] transition-all duration-300 transform hover:scale-105 cursor-pointer'>
                                 <DownloadIcon size={18}/>
                                 Download CV
